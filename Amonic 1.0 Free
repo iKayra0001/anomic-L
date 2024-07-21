@@ -1,4 +1,4 @@
-local mainName = "Amonic 1.0 Premium" 
+local mainName = "Amonic 1.0 Free" 
 if game:GetService("CoreGui"):FindFirstChild(mainName) then
     game.CoreGui[mainName]:Destroy()
 end
@@ -859,50 +859,6 @@ teamSection:addToggle("Team Sniper", false, function(v)
     until not v
 end)
 
--- ESP Page
-local backpackDisplay = false
-DisplaySection:addToggle("Display backpacks", nil, function(v)
-    backpackDisplay = v
-end)
-DisplaySection:addToggle("Join notifications", nil, function(v)
-    playerNotify(v)
-end)
-EspSection:addToggle("ESP Enabled", nil, function(v)
-    esp_Enabled = 
-end)
-local maxDisance = 100;
-EspSection:addSlider("Max distance (Helps stop lag)", 100, 0, 2000, function(v)
-    maxDisance = 
-end)
-
-EspSection1:addToggle("ESP Health", nil, function(state)
-    esp_Health = 
-end)
-EspSection1:addToggle("ESP Names", nil, function(state)
-    esp_Names = 
-end)
-EspSection1:addToggle("ESP Distance", nil, function(state)
-   esp_distance = 
-end)
-EspSection1:addToggle("ESP Boxes", nil, function(state)
-    esp_boxes = 
- end)
-EspSection1:addToggle("ESP Tracers", nil, function(state)
-    esp_tracers = 
-end)
-EspSection1:addDropdown("Tracer origin", {"Bottom", "Top","Mouse"}, function(t)
-    esp_tracer_orig = 
-end)
-EspSection1:addToggle("ESP status level", nil, function(state)
-    esp_WantedLevel = 
-end)
-EspSection1:addToggle("Tool ESP", nil, function(state)
-    esp_tools = 
-end)
-EspSection1:addColorPicker("ESP Main Color", Color3.fromRGB(255, 255, 255), function(s)
-    esp_Main_Colour = 
-end)
-
 wrldSection:addSlider("ClockTime", 0, 0, 23, function(valuex)
     wLighting.ClockTime = valuex
 end)
@@ -924,7 +880,17 @@ end)
 wrldSection:addColorPicker("Ambient", Color3.fromRGB(150, 140, 140), function(s)    
     wLighting.Ambient = s    
 end)
-MiscEsp:addButton("Printer ESP [Premium]", function()
+MiscEsp:addButton("Printer ESP", function()
+    for i,v in pairs(game:GetService("Workspace").Entities:GetChildren()) do
+        if v:IsA("Model") and v.Name == "Simple Printer" then
+            local a = Instance.new("BoxHandleAdornment")
+            a.Name = v.Name:lower().."_alwayswinAV"
+            a.Parent = v.hitbox
+            a.Adornee = v
+            a.AlwaysOnTop = true
+            a.ZIndex = 0
+            a.Transparency = 0.3
+            a.Color = BrickColor.new("Lime green")
         end
     end
 end)
