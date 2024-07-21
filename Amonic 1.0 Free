@@ -1,4 +1,4 @@
-local mainName = "Amonic 1.0 Premium" 
+local mainName = "Amonic 1.0 Free" 
 if game:GetService("CoreGui"):FindFirstChild(mainName) then
     game.CoreGui[mainName]:Destroy()
 end
@@ -14,7 +14,7 @@ local Main = library.new(mainName)
 -- // Tabs
 local PlayerPage = Main:addPage("Player", 5012544693)
 local CombatPage = Main:addPage("Combat", 6034509993)
-local EspPage = Main:addPage("Visuals", 5012544693)
+local EspPage = Main:addPage("Visuals [Premium]", 5012544693)
 local OthersPage = Main:addPage("Others", 6031280883)
 local TeleportPage = Main:addPage("Teleportation", 6031280883)
 local ShopPage = Main:addPage("Guns", 6034509993)
