@@ -34,13 +34,6 @@ local plrApp = PlayerPage:addSection("Appearance")
 local plrAppFE = PlayerPage:addSection("FE Stuff")
 local teamSection = PlayerPage:addSection("Team Changer (Cooldown)")
 
--- // EspPage Section
-local DisplaySection = EspPage:addSection("Display")
-local EspSection = EspPage:addSection("ESP")
-local EspSection1 = EspPage:addSection("ESP Configuration")
-local wrldSection = EspPage:addSection("Client World")
-local MiscEsp = EspPage:addSection("Miscellaneous ESP")
-
 -- // Other Section 
 local specificSection = OthersPage:addSection("Specific Section")
 local PlrTarget = OthersPage:addSection("Other Players")
@@ -68,9 +61,9 @@ local ThemeSection = UiPage:addSection("Theme")
 local UISection = UiPage:addSection("UI")
 
 -- // Credits Section
-local creds = UiPage:addSection("Developers: serkan.dll // mehmetexe")
+local creds = UiPage:addSection("Developers: serkan.dll")
 local UISection2 = UiPage:addSection("Discord: https://discord.gg/zUvH9S8yTT")
-local UISection2 = UiPage:addSection("Credits: serkan.dll // illi1nois // mehmetexe | Thanks for everything!")
+local UISection2 = UiPage:addSection("Credits: serkan.dll // illi1nois // mehmetexe")
 local UISection3 = UiPage:addSection("Patched: commandblock")
 
 -- ESP
