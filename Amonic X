@@ -1,4 +1,4 @@
-local mainName = "Anomiss 3.1" 
+local mainName = "Amonic 1.0" 
 if game:GetService("CoreGui"):FindFirstChild(mainName) then
     game.CoreGui[mainName]:Destroy()
 end
@@ -35,11 +35,11 @@ local plrAppFE = PlayerPage:addSection("FE Stuff")
 local teamSection = PlayerPage:addSection("Team Changer (Cooldown)")
 
 -- // EspPage Section
-local DisplaySection = EspPage:addSection("Display")
-local EspSection = EspPage:addSection("ESP")
+local DisplaySection = EspPage:addSection("Display [Premium]")
+local EspSection = EspPage:addSection("ESP [Premium]")
 local EspSection1 = EspPage:addSection("ESP Configuration [Premium]")
 local wrldSection = EspPage:addSection("Client World")
-local MiscEsp = EspPage:addSection("Miscellaneous ESP")
+local MiscEsp = EspPage:addSection("Miscellaneous ESP [Premium]")
 
 -- // Other Section 
 local specificSection = OthersPage:addSection("Specific Section")
@@ -73,6 +73,19 @@ local UISection2 = UiPage:addSection("Discord: https://discord.gg/zUvH9S8yTT")
 local UISection2 = UiPage:addSection("Credits: serkan.dll // illi1nois // mehmetexe | Thanks for everything!")
 local UISection3 = UiPage:addSection("Patched: commandblock")
 
+-- ESP
+local esp_Enabled      = false
+local esp_Names        = false
+local esp_Health       = false
+local esp_WantedLevel  = false
+local esp_distance     = false
+local esp_boxes        = false
+local esp_tracers      = false
+local esp_tracer_orig  = "Bottom"
+local esp_Main_Colour  = Color3.fromRGB(255, 255, 255)
+local rainbow_char     = false
+local rainbow_hair     = false
+local esp_tools        = false
 -- Player
 local CSEvents = game:GetService("ReplicatedStorage"):WaitForChild("_CS.Events")
 local teamList = {}
@@ -846,6 +859,41 @@ teamSection:addToggle("Team Sniper", false, function(v)
     until not v
 end)
 
+-- ESP Page
+local backpackDisplay = false
+DisplaySection:addToggle("Display backpacks", nil, function(v)
+    backpackDisplay = v
+end)
+DisplaySection:addToggle("Join notifications", nil, function(v)
+    playerNotify(v)
+end)
+EspSection:addToggle("ESP Enabled", nil, function(v)
+    esp_Enabled = v
+end)
+local maxDisance = 100;
+EspSection:addSlider("Max distance (Helps stop lag)", 100, 0, 2000, function(v)
+    maxDisance = v
+end)
+
+EspSection1:addToggle("ESP Health"
+end)
+EspSection1:addToggle("ESP Names"
+end)
+EspSection1:addToggle("ESP Distance"
+end)
+EspSection1:addToggle("ESP Boxes"
+ end)
+EspSection1:addToggle("ESP Tracers"
+end)
+EspSection1:addDropdown("Tracer origin"
+end)
+EspSection1:addToggle("ESP status level"
+end)
+EspSection1:addToggle("Tool ESP"
+end)
+EspSection1:addColorPicker("ESP Main Color"
+end)
+
 wrldSection:addSlider("ClockTime", 0, 0, 23, function(valuex)
     wLighting.ClockTime = valuex
 end)
@@ -866,6 +914,20 @@ wrldSection:addColorPicker("Color Correction", Color3.fromRGB(255, 255, 255), fu
 end)
 wrldSection:addColorPicker("Ambient", Color3.fromRGB(150, 140, 140), function(s)    
     wLighting.Ambient = s    
+end)
+MiscEsp:addButton("Printer ESP", function()
+    for i,v in pairs(game:GetService("Workspace").Entities:GetChildren()) do
+        if v:IsA("Model") and v.Name == "Simple Printer" then
+            local a = Instance.new("BoxHandleAdornment")
+            a.Name = v.Name:lower().."_alwayswinAV"
+            a.Parent = v.hitbox
+            a.Adornee = v
+            a.AlwaysOnTop = true
+            a.ZIndex = 0
+            a.Transparency = 0.3
+            a.Color = BrickColor.new("Lime green")
+        end
+    end
 end)
 
 local targetName = nil;
