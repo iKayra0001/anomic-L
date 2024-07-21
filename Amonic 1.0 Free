@@ -14,7 +14,7 @@ local Main = library.new(mainName)
 -- // Tabs
 local PlayerPage = Main:addPage("Player", 5012544693)
 local CombatPage = Main:addPage("Combat", 6034509993)
-local EspPage = Main:addPage("Visuals", 5012544693)
+local EspPage = Main:addPage("Visuals [Premium]")
 local OthersPage = Main:addPage("Others", 6031280883)
 local TeleportPage = Main:addPage("Teleportation", 6031280883)
 local ShopPage = Main:addPage("Guns", 6034509993)
@@ -35,11 +35,11 @@ local plrAppFE = PlayerPage:addSection("FE Stuff")
 local teamSection = PlayerPage:addSection("Team Changer (Cooldown)")
 
 -- // EspPage Section
-local DisplaySection = EspPage:addSection("Display [Premium]")
-local EspSection = EspPage:addSection("ESP [Premium]")
-local EspSection1 = EspPage:addSection("ESP Configuration [Premium]")
+local DisplaySection = EspPage:addSection("Display")
+local EspSection = EspPage:addSection("ESP")
+local EspSection1 = EspPage:addSection("ESP Configuration")
 local wrldSection = EspPage:addSection("Client World")
-local MiscEsp = EspPage:addSection("Miscellaneous ESP [Premium]")
+local MiscEsp = EspPage:addSection("Miscellaneous ESP")
 
 -- // Other Section 
 local specificSection = OthersPage:addSection("Specific Section")
@@ -857,6 +857,50 @@ teamSection:addToggle("Team Sniper", false, function(v)
     repeat wait(1)
         game:GetService("ReplicatedStorage"):FindFirstChild("_CS.Events").TeamChanger:FireServer(teamSniperValue)            
     until not v
+end)
+
+-- ESP Page
+local backpackDisplay = false
+DisplaySection:addToggle("Display backpacks", nil, function(v)
+    backpackDisplay = v
+end)
+DisplaySection:addToggle("Join notifications", nil, function(v)
+    playerNotify(v)
+end)
+EspSection:addToggle("ESP Enabled", nil, function(v)
+    esp_Enabled = v
+end)
+local maxDisance = 100;
+EspSection:addSlider("Max distance (Helps stop lag)", 100, 0, 2000, function(v)
+    maxDisance = v
+end)
+
+EspSection1:addToggle("ESP Health", nil, function(state)
+    esp_Health = state
+end)
+EspSection1:addToggle("ESP Names", nil, function(state)
+    esp_Names = state
+end)
+EspSection1:addToggle("ESP Distance", nil, function(state)
+   esp_distance = state
+end)
+EspSection1:addToggle("ESP Boxes", nil, function(state)
+    esp_boxes = state
+ end)
+EspSection1:addToggle("ESP Tracers", nil, function(state)
+    esp_tracers = state
+end)
+EspSection1:addDropdown("Tracer origin", {"Bottom", "Top","Mouse"}, function(t)
+    esp_tracer_orig = t
+end)
+EspSection1:addToggle("ESP status level", nil, function(state)
+    esp_WantedLevel = state
+end)
+EspSection1:addToggle("Tool ESP", nil, function(state)
+    esp_tools = state
+end)
+EspSection1:addColorPicker("ESP Main Color", Color3.fromRGB(255, 255, 255), function(s)
+    esp_Main_Colour = s
 end)
 
 wrldSection:addSlider("ClockTime", 0, 0, 23, function(valuex)
