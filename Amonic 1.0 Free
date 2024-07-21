@@ -1,4 +1,4 @@
-local mainName = "Amonic 3.1 Free" 
+local mainName = "Amonic 1.0 Premium" 
 if game:GetService("CoreGui"):FindFirstChild(mainName) then
     game.CoreGui[mainName]:Destroy()
 end
@@ -74,18 +74,18 @@ local UISection2 = UiPage:addSection("Credits: serkan.dll // illi1nois // mehmet
 local UISection3 = UiPage:addSection("Patched: commandblock")
 
 -- ESP
-local esp_Enabled      = 
-local esp_Names        = 
-local esp_Health       = 
-local esp_WantedLevel  = 
-local esp_distance     = 
-local esp_boxes        = 
-local esp_tracers      = 
-local esp_tracer_orig  = 
-local esp_Main_Colour  = 
-local rainbow_char     = 
-local rainbow_hair     = 
-local esp_tools        = 
+local esp_Enabled      = false
+local esp_Names        = false
+local esp_Health       = false
+local esp_WantedLevel  = false
+local esp_distance     = false
+local esp_boxes        = false
+local esp_tracers      = false
+local esp_tracer_orig  = "Bottom"
+local esp_Main_Colour  = Color3.fromRGB(255, 255, 255)
+local rainbow_char     = false
+local rainbow_hair     = false
+local esp_tools        = false
 -- Player
 local CSEvents = game:GetService("ReplicatedStorage"):WaitForChild("_CS.Events")
 local teamList = {}
@@ -868,39 +868,39 @@ DisplaySection:addToggle("Join notifications", nil, function(v)
     playerNotify(v)
 end)
 EspSection:addToggle("ESP Enabled", nil, function(v)
-    esp_Enabled = v
+    esp_Enabled = 
 end)
 local maxDisance = 100;
 EspSection:addSlider("Max distance (Helps stop lag)", 100, 0, 2000, function(v)
-    maxDisance = v
+    maxDisance = 
 end)
 
 EspSection1:addToggle("ESP Health", nil, function(state)
-    esp_Health = state
+    esp_Health = 
 end)
 EspSection1:addToggle("ESP Names", nil, function(state)
-    esp_Names = state
+    esp_Names = 
 end)
 EspSection1:addToggle("ESP Distance", nil, function(state)
-   esp_distance = state
+   esp_distance = 
 end)
 EspSection1:addToggle("ESP Boxes", nil, function(state)
-    esp_boxes = state
+    esp_boxes = 
  end)
 EspSection1:addToggle("ESP Tracers", nil, function(state)
-    esp_tracers = state
+    esp_tracers = 
 end)
 EspSection1:addDropdown("Tracer origin", {"Bottom", "Top","Mouse"}, function(t)
-    esp_tracer_orig = t
+    esp_tracer_orig = 
 end)
 EspSection1:addToggle("ESP status level", nil, function(state)
-    esp_WantedLevel = state
+    esp_WantedLevel = 
 end)
 EspSection1:addToggle("Tool ESP", nil, function(state)
-    esp_tools = state
+    esp_tools = 
 end)
 EspSection1:addColorPicker("ESP Main Color", Color3.fromRGB(255, 255, 255), function(s)
-    esp_Main_Colour = s
+    esp_Main_Colour = 
 end)
 
 wrldSection:addSlider("ClockTime", 0, 0, 23, function(valuex)
@@ -924,17 +924,7 @@ end)
 wrldSection:addColorPicker("Ambient", Color3.fromRGB(150, 140, 140), function(s)    
     wLighting.Ambient = s    
 end)
-MiscEsp:addButton("Printer ESP", function()
-    for i,v in pairs(game:GetService("Workspace").Entities:GetChildren()) do
-        if v:IsA("Model") and v.Name == "Simple Printer" then
-            local a = Instance.new("BoxHandleAdornment")
-            a.Name = v.Name:lower().."_alwayswinAV"
-            a.Parent = v.hitbox
-            a.Adornee = v
-            a.AlwaysOnTop = true
-            a.ZIndex = 0
-            a.Transparency = 0.3
-            a.Color = BrickColor.new("Lime green")
+MiscEsp:addButton("Printer ESP [Premium]", function()
         end
     end
 end)
