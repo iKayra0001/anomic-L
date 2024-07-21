@@ -1,4 +1,4 @@
-local mainName = "Amonic 1.0 Free" 
+local mainName = "Amonic 1.0 Free BETA" 
 if game:GetService("CoreGui"):FindFirstChild(mainName) then
     game.CoreGui[mainName]:Destroy()
 end
