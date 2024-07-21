@@ -69,7 +69,7 @@ local UISection = UiPage:addSection("UI")
 
 -- // Credits Section
 local creds = UiPage:addSection("Developer: serkan.dll")
-local UISection2 = UiPage:addSection("Discord: https://discord.gg/zUvH9S8yTT")
+local UISection2 = UiPage:addSection("Discord: https://discord.gg/amonic")
 local UISection2 = UiPage:addSection("Credits: serkan.dll // illi1nois // mehmetexe")
 local UISection3 = UiPage:addSection("Patched: none // Amonic on TOP!")
 
