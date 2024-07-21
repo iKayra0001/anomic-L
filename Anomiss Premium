@@ -97,5 +97,5 @@ end)
 
 TextButton_2.MouseButton1Click:Connect(function()
     Close()
-    loadstring(game:HttpGet("https://github.com/anomicl/main/raw/main/anomissllite"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/iKayra0001/anomic-L/main/AnomissLite"))()
 end)
