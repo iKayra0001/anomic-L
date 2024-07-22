@@ -1098,22 +1098,21 @@ end)
 CarSection:addButton("Spawn Held Car", function() 
     CSEvents.SpawnVehicle:FireServer(LPlayer.Character.HumanoidRootPart.CFrame, LPlayer.Character:FindFirstChildWhichIsA("Tool"));     
 end)
-CarSection:addButton("Unlock cars (LOOP)", function() 
+CarSection:addButton("Unlock cars (LOOP) [Premium Feature]", function() 
     while wait(1) do
         for i,v in pairs(game:GetService("Workspace").PlayerVehicles:GetDescendants()) do
             if v:IsA("VehicleSeat") or v:IsA("Seat") then
-                v.Disabled = false
                 wait(.3)
             end
         end
     end
 end)
-CarSection:addButton("Bring all cars", function() 
+CarSection:addButton("Bring all cars [Premium Feature]", function() 
     oldCFrame = LPlayer.Character.HumanoidRootPart.CFrame
     for i,v in pairs(game:GetService("Workspace").PlayerVehicles:GetChildren()) do
         if v:FindFirstChild("VehicleSeat") and v ~= nil and v:FindFirstChild("VehicleSeat").Damage.Value > 1 and not v:FindFirstChild("VehicleSeat"):FindFirstChild("SeatWeld") then
             local Carseat = v:FindFirstChild("VehicleSeat")        
-            Carseat.Disabled = false      
+            Carseat.Disabled =       
             wait(1)   
             if Carseat ~= nil and Carseat then
                 if Carseat.Parent:FindFirstChild("VehicleSeat") and not Carseat:FindFirstChild("SeatWeld") then   
