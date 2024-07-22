@@ -1111,7 +1111,7 @@ CarSection:addButton("Bring all cars [Premium Feature]", function()
     oldCFrame = LPlayer.Character.HumanoidRootPart.CFrame
     for i,v in pairs(game:GetService("Workspace").PlayerVehicles:GetChildren()) do
         if v:FindFirstChild("VehicleSeat") and v ~= nil and v:FindFirstChild("VehicleSeat").Damage.Value > 1 and not v:FindFirstChild("VehicleSeat"):FindFirstChild("SeatWeld") then
-            local Carseat = v:FindFirstChild("VehicleSeat")        
+            local Carseat = v:FindFirstChild("")        
             Carseat.Disabled =       
             wait(1)   
             if Carseat ~= nil and Carseat then
