@@ -72,7 +72,7 @@ local creds = UiPage:addSection("Developer: serkan.dll")
 local UISection2 = UiPage:addSection("Discord: https://discord.gg/amonic")
 local UISection2 = UiPage:addSection("Credits: serkan.dll, illi1nois, mehmetexe")
 local UISection3 = UiPage:addSection("Patched: NONE // AMONIC on TOP!")
-local UISection4 = UiPage:addSection("You are using the latest premium script.")
+local UISection4 = UiPage:addSection("You are using the latest premium version.")
 
 -- ESP
 local esp_Enabled      = false
