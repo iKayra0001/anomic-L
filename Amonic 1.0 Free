@@ -634,7 +634,7 @@ PlrSection:addToggle("Speed Bypass - (Dont walk into sharp terrain)", nil, funct
 end)
 
 local flying = false
-PlrSection:addKeybind("Flight KeyBind [Premium Feature]", nil, function()        
+PlrSection:("Flight KeyBind [Premium Feature]", nil, function()        
     flying = not flying
     if flying then
         stopFly()                    
