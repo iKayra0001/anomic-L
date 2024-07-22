@@ -1,4 +1,4 @@
-local mainName = "Amonic 1.0 Free BETA" 
+local mainName = "Amonic 1.0 Free" 
 if game:GetService("CoreGui"):FindFirstChild(mainName) then
     game.CoreGui[mainName]:Destroy()
 end
@@ -34,6 +34,13 @@ local plrApp = PlayerPage:addSection("Appearance")
 local plrAppFE = PlayerPage:addSection("FE Stuff")
 local teamSection = PlayerPage:addSection("Team Changer (Cooldown)")
 
+-- // EspPage Section
+local DisplaySection = EspPage:addSection("Display")
+local EspSection = EspPage:addSection("ESP")
+local EspSection1 = EspPage:addSection("ESP Configuration")
+local wrldSection = EspPage:addSection("Client World")
+local MiscEsp = EspPage:addSection("Miscellaneous ESP")
+
 -- // Other Section 
 local specificSection = OthersPage:addSection("Specific Section")
 local PlrTarget = OthersPage:addSection("Other Players")
@@ -63,8 +70,9 @@ local UISection = UiPage:addSection("UI")
 -- // Credits Section
 local creds = UiPage:addSection("Developer: serkan.dll")
 local UISection2 = UiPage:addSection("Discord: https://discord.gg/amonic")
-local UISection2 = UiPage:addSection("Credits: serkan.dll // illi1nois // mehmetexe")
-local UISection3 = UiPage:addSection("Patched: none // Amonic on TOP!")
+local UISection2 = UiPage:addSection("Credits: serkan.dll, illi1nois, mehmetexe")
+local UISection3 = UiPage:addSection("Patched: NONE // AMONIC on TOP!")
+local UISection4 = UiPage:addSection("You are using the latest premium script.")
 
 -- ESP
 local esp_Enabled      = false
@@ -852,50 +860,6 @@ teamSection:addToggle("Team Sniper", false, function(v)
     until not v
 end)
 
--- ESP Page
-local backpackDisplay = false
-DisplaySection:addToggle("Display backpacks", nil, function(v)
-    backpackDisplay = v
-end)
-DisplaySection:addToggle("Join notifications", nil, function(v)
-    playerNotify(v)
-end)
-EspSection:addToggle("ESP Enabled", nil, function(v)
-    esp_Enabled = v
-end)
-local maxDisance = 100;
-EspSection:addSlider("Max distance (Helps stop lag)", 100, 0, 2000, function(v)
-    maxDisance = v
-end)
-
-EspSection1:addToggle("ESP Health", nil, function(state)
-    esp_Health = state
-end)
-EspSection1:addToggle("ESP Names", nil, function(state)
-    esp_Names = state
-end)
-EspSection1:addToggle("ESP Distance", nil, function(state)
-   esp_distance = state
-end)
-EspSection1:addToggle("ESP Boxes", nil, function(state)
-    esp_boxes = state
- end)
-EspSection1:addToggle("ESP Tracers", nil, function(state)
-    esp_tracers = state
-end)
-EspSection1:addDropdown("Tracer origin", {"Bottom", "Top","Mouse"}, function(t)
-    esp_tracer_orig = t
-end)
-EspSection1:addToggle("ESP status level", nil, function(state)
-    esp_WantedLevel = state
-end)
-EspSection1:addToggle("Tool ESP", nil, function(state)
-    esp_tools = state
-end)
-EspSection1:addColorPicker("ESP Main Color", Color3.fromRGB(255, 255, 255), function(s)
-    esp_Main_Colour = s
-end)
-
 wrldSection:addSlider("ClockTime", 0, 0, 23, function(valuex)
     wLighting.ClockTime = valuex
 end)
@@ -916,20 +880,6 @@ wrldSection:addColorPicker("Color Correction", Color3.fromRGB(255, 255, 255), fu
 end)
 wrldSection:addColorPicker("Ambient", Color3.fromRGB(150, 140, 140), function(s)    
     wLighting.Ambient = s    
-end)
-MiscEsp:addButton("Printer ESP", function()
-    for i,v in pairs(game:GetService("Workspace").Entities:GetChildren()) do
-        if v:IsA("Model") and v.Name == "Simple Printer" then
-            local a = Instance.new("BoxHandleAdornment")
-            a.Name = v.Name:lower().."_alwayswinAV"
-            a.Parent = v.hitbox
-            a.Adornee = v
-            a.AlwaysOnTop = true
-            a.ZIndex = 0
-            a.Transparency = 0.3
-            a.Color = BrickColor.new("Lime green")
-        end
-    end
 end)
 
 local targetName = nil;
@@ -1534,7 +1484,7 @@ end)
 
 game:GetService("RunService").RenderStepped:connect(function()       
    if esp_Enabled then       
-        for _,v in pairs(Players:GetChildren()) do
+        for _,v in pairs(Players:GetPlayers()) do
             if v.Character and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Humanoid").Health > 0 and v ~= LPlayer then
             local part = v.Character.HumanoidRootPart             
             local distance = LPlayer:DistanceFromCharacter(v.Character.HumanoidRootPart.Position)
@@ -1559,7 +1509,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.UpVector*(3+(part.Position-game.Workspace.CurrentCamera.CFrame.Position).Magnitude/25)).X,
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.UpVector*(3+(part.Position-game.Workspace.CurrentCamera.CFrame.Position).Magnitude/40)).Y)
                         coroutine.wrap(function()
-                        game.RunService.RenderStepped:Wait()
+                        game:GetService("RunService").RenderStepped:Wait()
                         a:Remove()
                         end)()
                     end                    
@@ -1585,7 +1535,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.RightVector*2.5+part.CFrame.UpVector*-2.5).X,
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.RightVector*2.5+part.CFrame.UpVector*-2.5).Y)
                         coroutine.wrap(function()
-                        game.RunService.RenderStepped:Wait()
+                        game:GetService("RunService").RenderStepped:Wait()
                             c:Remove()
                         end)()
                         local e=Drawing.new("Quad")
@@ -1607,7 +1557,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.RightVector*2.5+part.CFrame.UpVector*-2.5).X,
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.RightVector*2.5+part.CFrame.UpVector*-2.5).Y)
                         coroutine.wrap(function()
-                            game.RunService.RenderStepped:Wait()
+                            game:GetService("RunService").RenderStepped:Wait()
                             e:Remove()
                         end)()
                         local d=Drawing.new("Quad")
@@ -1625,7 +1575,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                         d.PointC=c.PointC
                         d.PointD=c.PointD
                         coroutine.wrap(function()
-                            game.RunService.RenderStepped:Wait()
+                            game:GetService("RunService").RenderStepped:Wait()
                             d:Remove()
                         end)()
                     end     
@@ -1650,7 +1600,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.UpVector*(3+(part.Position-game.Workspace.CurrentCamera.CFrame.Position).Magnitude/25)).X,
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.UpVector*(3+(part.Position-game.Workspace.CurrentCamera.CFrame.Position).Magnitude/75)).Y)
                         coroutine.wrap(function()
-                        game.RunService.RenderStepped:Wait()
+                        game:GetService("RunService").RenderStepped:Wait()
                         a:Remove()
                         end)()
                     end   
@@ -1674,7 +1624,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.RightVector*-2+part.CFrame.UpVector*-2.5).X,
                             game.Workspace.CurrentCamera:WorldToViewportPoint(part.CFrame.Position+part.CFrame.RightVector*-2+part.CFrame.UpVector*-2.5).Y)-->V
                         coroutine.wrap(function()
-                            game.RunService.RenderStepped:Wait()
+                            game:GetService("RunService").RenderStepped:Wait()
                             a:Remove()
                         end)()
                     end
@@ -1695,7 +1645,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                         end
                         t.To = Vector2.new(Vec.X, Vec.Y)          
                         coroutine.wrap(function()
-                            game.RunService.RenderStepped:Wait()
+                            game:GetService("RunService").RenderStepped:Wait()
                             t:Remove()
                         end)()                        
                     end                                      
@@ -1762,7 +1712,7 @@ game:GetService("RunService").RenderStepped:connect(function()
                     toolTag.Transparency = 1
                     toolTag.Position = Vector2.new(vec.X,vec.Y)
                     coroutine.wrap(function()
-                        game.RunService.RenderStepped:Wait()
+                        game:GetService("RunService").RenderStepped:Wait()
                         toolTag:Remove()
                     end)()
                  end
@@ -1771,8 +1721,8 @@ game:GetService("RunService").RenderStepped:connect(function()
     end    
 end)
 
-notify("Anomic V", "Scripts made by Serkan.dll")
-notify("Anomic V", "Info can be found in discord")
+notify("Amonic.dll", "Scripts made by serkan.dll")
+notify("Amonic.dll", "Unpatched by serkan.dll")
 
 wait(.3)
 
