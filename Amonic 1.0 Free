@@ -1112,11 +1112,9 @@ CarSection:addButton("Bring all cars [Premium Feature]", function()
     for i,v in pairs(game:GetService("Workspace").PlayerVehicles:GetChildren()) do
         if v:FindFirstChild("VehicleSeat") and v ~= nil and v:FindFirstChild("VehicleSeat").Damage.Value > 1 and not v:FindFirstChild("VehicleSeat"):FindFirstChild("SeatWeld") then
             local Carseat = v:FindFirstChild("")        
-            Carseat.Disabled =       
             wait(1)   
             if Carseat ~= nil and Carseat then
                 if Carseat.Parent:FindFirstChild("VehicleSeat") and not Carseat:FindFirstChild("SeatWeld") then   
-                    Carseat.Disabled = false        
                     for i = 20, 0, -1 do        
                         wait(.15)
                         LPlayer.Character.HumanoidRootPart.CFrame = Carseat.CFrame           
@@ -1136,8 +1134,7 @@ CarSection:addButton("Bring all cars [Premium Feature]", function()
         end
     end
 end)
-CarSection:addButton("Crash passengers", function() 
-    local seat = game.Players.LocalPlayer.Character.Humanoid.SeatPart
+CarSection:addButton("Crash passengers [Premium Feature]", function() 
     seat.Parent:MoveTo(Vector3.new(seat.Parent.PrimaryPart.Position.X, workspace.FallenPartsDestroyHeight+1, seat.Parent.PrimaryPart.Position.Z))
 end)
 CarSection:addButton("Skydive passengers", function() 
