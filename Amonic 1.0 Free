@@ -106,10 +106,6 @@ local shotgunMod1 = false
 local Rmod = false
 local speedBypass = false
 
-local Hitboxes = false
-local headHitboxSize = 5
-local hitboxTransparency = 0.7
-
 local autoStore = false
 local minHealth = 70
 local AutoHeal = false
@@ -1306,25 +1302,7 @@ coroutine.wrap(function()
         end
     end
 end)()
-coroutine.wrap(function()    
-        while wait(1.5) do
-            if Hitboxes then
-                pcall(function()                  
-                    for i,v in pairs(game.Players:GetPlayers()) do
-                    if v ~= LPlayer and v.Character and v.Character:FindFirstChild('Head') then
-                        v.Character.Head.Size = Vector3.new(headHitboxSize,headHitboxSize,headHitboxSize)
-                        v.Character.Head.Transparency = hitboxTransparency
-                        v.Character.Head.CanCollide = false
-                        if v.Character.Humanoid.Health == 0 then
-                            v.Character.Head.Size = LPlayer.Character.Head.Size
-                            v.Character.Head.Transparency = LPlayer.Character.Head.Transparency                        
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end)()
+
 UIS.InputBegan:connect(function(key)
     if infiniteStamina and key.KeyCode == Enum.KeyCode.LeftShift then
         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 23
